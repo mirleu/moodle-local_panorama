@@ -23,14 +23,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+global $PAGE;
+
 if ($hassiteconfig) {
-	$courses = get_courses();
-	$resultcourses = array();
-
-	foreach ($courses as $course) {
-		$resultcourses[$course->id] = $course->fullname;
-	}
-
 	$ADMIN->add('modules', new admin_category('panorama', new lang_string('panorama', 'local_panorama')));
 
 	require_once('classes/panorama_admin_page.php');
@@ -68,13 +63,36 @@ if ($hassiteconfig) {
 		PARAM_TEXT
 	));
 
-	$settings->add(new admin_setting_configmultiselect(
-		'panorama/courses',
-		new lang_string('courses', 'local_panorama'),
-		new lang_string('coursesdesc', 'local_panorama'),
-		[],
-		$resultcourses
+	$settings->add(new admin_setting_configpasswordunmask(
+		'panorama/visualizerversion',
+		new lang_string('visualizerversion', 'local_panorama'),
+		new lang_string('visualizerversiondesc', 'local_panorama'),
+		'',
+		PARAM_TEXT
 	));
+
+	$settings->add(new admin_setting_configpasswordunmask(
+		'panorama/visualizerintegrity',
+		new lang_string('visualizerintegrity', 'local_panorama'),
+		new lang_string('visualizerintegritydesc', 'local_panorama'),
+		'',
+		PARAM_TEXT
+	));
+
+	$environment_setting = new admin_setting_configselect(
+		'panorama/environment',
+		new lang_string('environment', 'local_panorama'),
+		new lang_string('environmentdesc', 'local_panorama'),
+		'Production US',
+		array('Staging' => 'Staging', 'Production US' => 'Production US', 'Production CA' => 'Production CA', 'Production EU' => 'Production EU', 'Production AZ' => 'Production AZ')
+	);
+
+	if (method_exists($environment_setting, 'set_lockable')) {
+		$environment_setting->set_lockable(true);
+	}
+
+
+	$settings->add($environment_setting);
 
 	$ADMIN->add('panorama', $settings);
 }
