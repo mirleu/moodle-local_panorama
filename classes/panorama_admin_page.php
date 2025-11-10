@@ -26,10 +26,8 @@ namespace local_panorama;
 defined('MOODLE_INTERNAL') || die();
 
 class panorama_admin_page extends \admin_settingpage {
-
-
-    public function __construct($name, $visiblename, $reqcapability = 'moodle/site:config', $hidden = false, $context = null) {
-        parent::__construct($name, $visiblename, $reqcapability, $hidden, $context);
+    public function __construct($name, $visiblename, $req_capability = 'moodle/site:config', $hidden = false, $context = null) {
+        parent::__construct($name, $visiblename, $req_capability, $hidden, $context);
     }
 
     public function check_access() {
