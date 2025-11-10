@@ -32,43 +32,43 @@ if ($hassiteconfig) {
     $settings = new \local_panorama\panorama_admin_page('panoramasettings', new lang_string('settings', 'local_panorama'));
 
     $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/key1',
-    new lang_string('key1', 'local_panorama'),
-    new lang_string('key1desc', 'local_panorama'),
-    '',
-    PARAM_TEXT
+        'panorama/key1',
+        new lang_string('key1', 'local_panorama'),
+        new lang_string('key1desc', 'local_panorama'),
+        '',
+        PARAM_TEXT
     ));
 
     $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/key2',
-    new lang_string('key2', 'local_panorama'),
-    new lang_string('key2desc', 'local_panorama'),
-    '',
-    PARAM_TEXT
+        'panorama/key2',
+        new lang_string('key2', 'local_panorama'),
+        new lang_string('key2desc', 'local_panorama'),
+        '',
+        PARAM_TEXT
     ));
 
     $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/consumerkey',
-    new lang_string('consumerkey', 'local_panorama'),
-    new lang_string('consumerkeydesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
+        'panorama/consumerkey',
+        new lang_string('consumerkey', 'local_panorama'),
+        new lang_string('consumerkeydesc', 'local_panorama'),
+        '',
+        PARAM_TEXT
     ));
 
     $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/ltikey',
-    new lang_string('ltikey', 'local_panorama'),
-    new lang_string('ltikeydesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
+        'panorama/ltikey',
+        new lang_string('ltikey', 'local_panorama'),
+        new lang_string('ltikeydesc', 'local_panorama'),
+        '',
+        PARAM_TEXT
     ));
 
     $environment_setting = new admin_setting_configselect(
-    'panorama/environment',
-    new lang_string('environment', 'local_panorama'),
-    new lang_string('environmentdesc', 'local_panorama'),
-    'Production US',
-    ['Staging' => 'Staging', 'Production US' => 'Production US', 'Production CA' => 'Production CA', 'Production EU' => 'Production EU', 'Production AZ' => 'Production AZ']
+        'panorama/environment',
+        new lang_string('environment', 'local_panorama'),
+        new lang_string('environmentdesc', 'local_panorama'),
+        'Production US',
+        ['Staging' => 'Staging', 'Production US' => 'Production US', 'Production CA' => 'Production CA', 'Production EU' => 'Production EU', 'Production AZ' => 'Production AZ']
     );
 
     if (method_exists($environment_setting, 'set_lockable')) {
